@@ -42,10 +42,11 @@ class MapTest < Minitest::Test
 
     numbers = [234, 10, 9119, 38881]
     zip_codes = numbers.map do |number|
-      number.to_s
-      while number < 5
-        number = "0" + number
+      append = 5 - number.to_s.length
+      append.times do
+        number = "0" + number.to_s
       end
+      number.to_s
     end
     assert_equal ["00234", "00010", "09119", "38881"], zip_codes
   end
